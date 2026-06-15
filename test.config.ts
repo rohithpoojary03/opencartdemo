@@ -3,8 +3,8 @@ export class TestConfig {
   //execution_env="local"; //remote, lambdatest
 
   //appUrl="https://tutorialsninja.com/demo/"
-  appUrl="http://localhost/opencart/upload/"
-  //appUrl="https://naveenautomationlabs.com/opencart"
+  //appUrl="http://localhost/opencart/upload/"
+  appUrl="https://tutorialsninja.com/demo/"
 
   //valid login credentials
   email="rohithpb@abc.com"
