@@ -27,7 +27,7 @@ export class ProductPage {
      * @param qty - Quantity to set
      */
     async setQuantity(qty: string): Promise<void> {
-        await this.txtQuantity.fill('');
+        //await this.txtQuantity.fill('');
         await this.txtQuantity.fill(qty);
     }
 
@@ -42,20 +42,15 @@ export class ProductPage {
      * Checks if confirmation message is visible
      * @returns Promise<boolean> - Returns true if message is visible
      */
-    async isConfirmationMessageVisible(): Promise<boolean> {
-        try {
-            if(this.cnfMsg!=null){
-                 return true;
-            }
-            else{
-                return false;
-            }//await expect(this.cnfMsg).toBeVisible();
-           
-        } catch (error) {
-            console.log(`Confirmation message not found: ${error}`);
-            return false;
-        }
+     async isConfirmationMessageVisible(): Promise<boolean> {
+    try {
+        await expect(this.cnfMsg).toBeVisible();
+        return true;
+    } catch (error) {
+        console.log(`Confirmation message not found: ${error}`);
+        return false;
     }
+}
 
     /**
      * Clicks on Items button to navigate to cart
@@ -69,10 +64,13 @@ export class ProductPage {
      * @returns Promise<ShoppingCartPage> - Returns ShoppingCartPage instance
      */
     async clickViewCart(): Promise<ShoppingCartPage> {
-        await this.lnkViewCart.click();
-        return new ShoppingCartPage(this.page);
-    }
+    await this.btnItems.click();
 
+    await expect(this.lnkViewCart).toBeVisible(); // wait properly
+
+    await this.lnkViewCart.click();
+    return new ShoppingCartPage(this.page);
+}
     /**
      * Complete workflow to add product to cart
      * @param quantity - Quantity of product to add
@@ -80,6 +78,6 @@ export class ProductPage {
     async addProductToCart(quantity: string): Promise<void> {
         await this.setQuantity(quantity);
         await this.addToCart();
-        await this.isConfirmationMessageVisible();
+        await expect(this.cnfMsg).toContainText('Success');
     }
 }
