@@ -1,7 +1,7 @@
 /**
  * Test Case: Product Search
  * 
- * Tags: @master @regression
+ * Tags: @master @regression @endtoend
  * 
  * Steps:
  * 1) Navigate to the application URL

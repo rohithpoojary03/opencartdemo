@@ -41,7 +41,6 @@ test.afterEach(async ({ page }) => {
 test('User registration test @master @sanity @regression', async ({ page }) => {
 
     //Go to 'My Account' and click 'Register'
-
     await homePage.clickMyAccount();
     await homePage.clickRegister();
 

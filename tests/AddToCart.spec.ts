@@ -1,7 +1,7 @@
 /**
  * Test Case: Add Product to Cart
  * 
- * Tags: @master @regression
+ * Tags: @master @regression @sanity @endtoend
  * 
  * Steps:
  * 1. Navigate to application URL
